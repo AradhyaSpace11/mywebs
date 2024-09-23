@@ -46,13 +46,30 @@
             border: 1px solid #ffffff;
             padding: 1rem;
             text-align: center;
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .project:hover {
-            cursor: pointer;
+        .project::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            transform: rotate(-45deg);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        
+        .project:hover::before {
+            transform: rotate(-45deg) translateY(-50%);
         }
     </style>
 </head>
