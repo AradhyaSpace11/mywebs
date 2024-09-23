@@ -21,7 +21,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        #colorPicker {
+        #colorPicker, #shapeSelector {
             margin-bottom: 1rem;
         }
         #rgbValue {
@@ -44,6 +44,12 @@
     <div class="container">
         <h1>Color Selector and Drawing Canvas</h1>
         <input type="color" id="colorPicker">
+        <select id="shapeSelector">
+            <option value="freehand">Freehand</option>
+            <option value="line">Line</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+        </select>
         <div id="colorDisplay"></div>
         <div id="rgbValue"></div>
         <canvas id="canvas" width="400" height="300"></canvas>
@@ -51,12 +57,15 @@
 
     <script>
         const colorPicker = document.getElementById('colorPicker');
+        const shapeSelector = document.getElementById('shapeSelector');
         const rgbValue = document.getElementById('rgbValue');
         const colorDisplay = document.getElementById('colorDisplay');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         let isDrawing = false;
+        let startX, startY;
+        let imageData;
 
         function updateColor() {
             const color = colorPicker.value;
@@ -72,7 +81,11 @@
 
         function startDrawing(e) {
             isDrawing = true;
-            draw(e);
+            [startX, startY] = [e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop];
+            imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            if (shapeSelector.value === 'freehand') {
+                draw(e);
+            }
         }
 
         function stopDrawing() {
@@ -83,14 +96,51 @@
         function draw(e) {
             if (!isDrawing) return;
 
+            const [currentX, currentY] = [e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop];
+
+            ctx.strokeStyle = colorPicker.value;
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
-            ctx.strokeStyle = colorPicker.value;
 
-            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-            ctx.stroke();
+            if (shapeSelector.value === 'freehand') {
+                ctx.lineTo(currentX, currentY);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(currentX, currentY);
+            } else {
+                ctx.putImageData(imageData, 0, 0);
+                switch(shapeSelector.value) {
+                    case 'line':
+                        drawLine(startX, startY, currentX, currentY);
+                        break;
+                    case 'rectangle':
+                        drawRectangle(startX, startY, currentX, currentY);
+                        break;
+                    case 'circle':
+                        drawCircle(startX, startY, currentX, currentY);
+                        break;
+                }
+            }
+        }
+
+        function drawLine(x1, y1, x2, y2) {
             ctx.beginPath();
-            ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        function drawRectangle(x1, y1, x2, y2) {
+            ctx.beginPath();
+            ctx.rect(x1, y1, x2 - x1, y2 - y1);
+            ctx.stroke();
+        }
+
+        function drawCircle(x1, y1, x2, y2) {
+            const radius = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            ctx.beginPath();
+            ctx.arc(x1, y1, radius, 0, 2 * Math.PI);
+            ctx.stroke();
         }
 
         colorPicker.addEventListener('input', updateColor);
