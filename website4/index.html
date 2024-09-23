@@ -61,13 +61,13 @@
         
         .project {
             border: 1px solid #ffffff;
-            border-radius: 15px; /* Added rounded corners */
+            border-radius: 15px;
             padding: 1rem;
             text-align: center;
-            transition: transform 0.3s ease, border 0.3s ease;
+            transition: border 0.1s ease;
             transform-style: preserve-3d;
             perspective: 1000px;
-            overflow: hidden; /* Ensure content doesn't spill out of rounded corners */
+            overflow: hidden;
         }
         
         .project:hover {
@@ -172,14 +172,16 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
 
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
+                const rotateX = (y - centerY) / 10; // Increased tilt
+                const rotateY = (centerX - x) / 10; // Increased tilt
 
-                // Calculate border color based on tilt
-                const hue = Math.abs(rotateX + rotateY) * 10;
-                const borderColor = `hsl(${hue}, 100%, 50%)`;
+                // Calculate border color based on position
+                const hue = (x / rect.width * 360 + y / rect.height * 360) % 360;
+                const saturation = 100;
+                const lightness = 50;
+                const borderColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.1, 1.1, 1.1)`;
                 card.style.borderColor = borderColor;
             });
 
