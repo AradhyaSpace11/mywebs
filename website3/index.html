@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #colorPicker {
+            margin-bottom: 1rem;
+        }
+        #rgbValue {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        #colorDisplay {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Color Selector</h1>
+        <input type="color" id="colorPicker">
+        <div id="colorDisplay"></div>
+        <div id="rgbValue"></div>
+    </div>
+
+    <script>
+        const colorPicker = document.getElementById('colorPicker');
+        const rgbValue = document.getElementById('rgbValue');
+        const colorDisplay = document.getElementById('colorDisplay');
+
+        function updateColor() {
+            const color = colorPicker.value;
+            colorDisplay.style.backgroundColor = color;
+            
+            // Convert hex to RGB
+            const r = parseInt(color.substr(1,2), 16);
+            const g = parseInt(color.substr(3,2), 16);
+            const b = parseInt(color.substr(5,2), 16);
+            
+            rgbValue.textContent = `RGB: (${r}, ${g}, ${b})`;
+        }
+
+        colorPicker.addEventListener('input', updateColor);
+        updateColor(); // Initial color update
+    </script>
+</body>
+</html>
