@@ -134,8 +134,8 @@
                 const x = parseFloat(dust.style.left);
                 const y = parseFloat(dust.style.top);
                 
-                let newX = x + (Math.random() - 0.5) * 0.5;
-                let newY = y + (Math.random() - 0.5) * 0.5;
+                let newX = x + (Math.random() - 0.5) * 0.1; // Reduced from 0.5 to 0.1
+                let newY = y + (Math.random() - 0.5) * 0.1; // Reduced from 0.5 to 0.1
                 
                 if (newX < 0) newX = 100;
                 if (newX > 100) newX = 0;
