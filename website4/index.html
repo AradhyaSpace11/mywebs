@@ -61,15 +61,18 @@
         
         .project {
             border: 1px solid #ffffff;
+            border-radius: 15px; /* Added rounded corners */
             padding: 1rem;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border 0.3s ease;
             transform-style: preserve-3d;
             perspective: 1000px;
+            overflow: hidden; /* Ensure content doesn't spill out of rounded corners */
         }
         
         .project:hover {
             cursor: pointer;
+            border-width: 3px;
         }
     </style>
 </head>
@@ -172,11 +175,17 @@
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
 
+                // Calculate border color based on tilt
+                const hue = Math.abs(rotateX + rotateY) * 10;
+                const borderColor = `hsl(${hue}, 100%, 50%)`;
+
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.borderColor = borderColor;
             });
 
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                card.style.borderColor = '#ffffff';
             });
         });
     </script>
