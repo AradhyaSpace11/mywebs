@@ -38,6 +38,9 @@
             border: 1px solid #000;
             cursor: crosshair;
         }
+        #fillToggle {
+            margin-left: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +53,9 @@
             <option value="rectangle">Rectangle</option>
             <option value="circle">Circle</option>
         </select>
+        <label for="fillToggle">
+            <input type="checkbox" id="fillToggle"> Fill Shape
+        </label>
         <div id="colorDisplay"></div>
         <div id="rgbValue"></div>
         <canvas id="canvas" width="400" height="300"></canvas>
@@ -62,6 +68,7 @@
         const colorDisplay = document.getElementById('colorDisplay');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        const fillToggle = document.getElementById('fillToggle');
 
         let isDrawing = false;
         let startX, startY;
@@ -99,6 +106,7 @@
             const [currentX, currentY] = [e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop];
 
             ctx.strokeStyle = colorPicker.value;
+            ctx.fillStyle = colorPicker.value;
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
 
@@ -133,6 +141,9 @@
         function drawRectangle(x1, y1, x2, y2) {
             ctx.beginPath();
             ctx.rect(x1, y1, x2 - x1, y2 - y1);
+            if (fillToggle.checked) {
+                ctx.fill();
+            }
             ctx.stroke();
         }
 
@@ -140,6 +151,9 @@
             const radius = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
             ctx.beginPath();
             ctx.arc(x1, y1, radius, 0, 2 * Math.PI);
+            if (fillToggle.checked) {
+                ctx.fill();
+            }
             ctx.stroke();
         }
 
