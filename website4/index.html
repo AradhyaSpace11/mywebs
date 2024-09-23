@@ -20,6 +20,23 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+        
+        #dust-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .dust-particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
         }
         
         .container {
@@ -46,34 +63,11 @@
             border: 1px solid #ffffff;
             padding: 1rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.2) 50%,
-                rgba(255, 255, 255, 0.1) 100%
-            );
-            transform: rotate(-45deg);
-            transition: transform 0.5s ease;
-            z-index: -1;
-        }
-        
-        .project:hover::before {
-            transform: rotate(-45deg) translateY(-50%);
         }
     </style>
 </head>
 <body>
+    <div id="dust-container"></div>
     <div class="container">
         <header>
             <h1>Aradhya Gaonkar</h1>
@@ -112,25 +106,51 @@
     </div>
 
     <script>
-        document.querySelectorAll('.project').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        const dustContainer = document.getElementById('dust-container');
+        const dustCount = 100;
+        const dustParticles = [];
 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+        function createDust() {
+            for (let i = 0; i < dustCount; i++) {
+                const dust = document.createElement('div');
+                dust.classList.add('dust-particle');
+                
+                const size = Math.random() * 3 + 1;
+                dust.style.width = `${size}px`;
+                dust.style.height = `${size}px`;
+                
+                dust.style.left = `${Math.random() * 100}%`;
+                dust.style.top = `${Math.random() * 100}%`;
+                
+                dust.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                dustContainer.appendChild(dust);
+                dustParticles.push(dust);
+            }
+        }
 
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        function animateDust() {
+            dustParticles.forEach(dust => {
+                const x = parseFloat(dust.style.left);
+                const y = parseFloat(dust.style.top);
+                
+                let newX = x + (Math.random() - 0.5) * 0.5;
+                let newY = y + (Math.random() - 0.5) * 0.5;
+                
+                if (newX < 0) newX = 100;
+                if (newX > 100) newX = 0;
+                if (newY < 0) newY = 100;
+                if (newY > 100) newY = 0;
+                
+                dust.style.left = `${newX}%`;
+                dust.style.top = `${newY}%`;
             });
+            
+            requestAnimationFrame(animateDust);
+        }
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
-        });
+        createDust();
+        animateDust();
     </script>
 </body>
 </html>
