@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aradhya Gaonkar - Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+        @font-face {
+            font-family: 'DottedFont';
+            src: url('https://cdn.jsdelivr.net/gh/CowboyCollective/Dot-Matrix@master/DotMatrix.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/CowboyCollective/Dot-Matrix@master/DotMatrix.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
         
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: 'Nothing You Could Do', cursive;
+            font-family: 'DottedFont', monospace;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -40,6 +46,13 @@
             border: 1px solid #ffffff;
             padding: 1rem;
             text-align: center;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .project:hover {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -80,5 +93,27 @@
             <p>GitHub: github.com/aradhyagaonkar</p>
         </section>
     </div>
+
+    <script>
+        document.querySelectorAll('.project').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+    </script>
 </body>
 </html>
