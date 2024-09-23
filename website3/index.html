@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Selector</title>
+    <title>Color Selector and Drawing Canvas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,20 +34,29 @@
             margin: 1rem auto;
             border: 1px solid #ccc;
         }
+        #canvas {
+            border: 1px solid #000;
+            cursor: crosshair;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Color Selector</h1>
+        <h1>Color Selector and Drawing Canvas</h1>
         <input type="color" id="colorPicker">
         <div id="colorDisplay"></div>
         <div id="rgbValue"></div>
+        <canvas id="canvas" width="400" height="300"></canvas>
     </div>
 
     <script>
         const colorPicker = document.getElementById('colorPicker');
         const rgbValue = document.getElementById('rgbValue');
         const colorDisplay = document.getElementById('colorDisplay');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let isDrawing = false;
 
         function updateColor() {
             const color = colorPicker.value;
@@ -61,7 +70,35 @@
             rgbValue.textContent = `RGB: (${r}, ${g}, ${b})`;
         }
 
+        function startDrawing(e) {
+            isDrawing = true;
+            draw(e);
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.beginPath();
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = colorPicker.value;
+
+            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        }
+
         colorPicker.addEventListener('input', updateColor);
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
         updateColor(); // Initial color update
     </script>
 </body>
