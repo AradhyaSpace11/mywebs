@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Netflix</title>
+    <style>
+        body {
+            background-color: #141414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            background-color: #555;
+        }
+
+        button {
+            background-color: #e50914;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f40612;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Netflix_logo.svg" alt="Netflix Logo" class="logo">
+        <h2>Sign In</h2>
+        <input type="text" placeholder="Email or phone number" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+    </div>
+</body>
+</html>
+
+
+
+

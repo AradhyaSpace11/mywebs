@@ -74,45 +74,71 @@
             cursor: pointer;
             border-width: 3px;
         }
+        
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            object-fit: cover;
+            filter: blur(5px);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+        }
     </style>
 </head>
 <body>
-    <div id="dust-container"></div>
-    <div class="container">
-        <header>
-            <h1>Aradhya Gaonkar</h1>
-            <p>Web Developer | Designer | Creative Thinker</p>
-        </header>
-        
-        <section class="section">
-            <h2>About Me</h2>
-            <p>Hello! I'm Aradhya Gaonkar, a passionate web developer and designer. I love creating beautiful and functional websites that leave a lasting impression.</p>
-        </section>
-        
-        <section class="section">
-            <h2>My Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <h3>Project 1</h3>
-                    <p>A brief description of your first project.</p>
+    <video autoplay muted loop id="background-video">
+        <source src="./animation.mp4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content-wrapper">
+        <div id="dust-container"></div>
+        <div class="container">
+            <header>
+                <h1>Aradhya Gaonkar</h1>
+                <p>Web Developer | Designer | Creative Thinker</p>
+            </header>
+            
+            <section class="section">
+                <h2>About Me</h2>
+                <p>Hello! I'm Aradhya Gaonkar, a passionate web developer and designer. I love creating beautiful and functional websites that leave a lasting impression.</p>
+            </section>
+            
+            <section class="section">
+                <h2>My Projects</h2>
+                <div class="projects">
+                    <div class="project">
+                        <h3>Project 1</h3>
+                        <p>A brief description of your first project.</p>
+                    </div>
+                    <div class="project">
+                        <h3>Project 2</h3>
+                        <p>A brief description of your second project.</p>
+                    </div>
+                    <div class="project">
+                        <h3>Project 3</h3>
+                        <p>A brief description of your third project.</p>
+                    </div>
                 </div>
-                <div class="project">
-                    <h3>Project 2</h3>
-                    <p>A brief description of your second project.</p>
-                </div>
-                <div class="project">
-                    <h3>Project 3</h3>
-                    <p>A brief description of your third project.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h2>Contact Me</h2>
-            <p>Email: aradhya.gaonkar@example.com</p>
-            <p>LinkedIn: linkedin.com/in/aradhyagaonkar</p>
-            <p>GitHub: github.com/aradhyagaonkar</p>
-        </section>
+            </section>
+            
+            <section class="section">
+                <h2>Contact Me</h2>
+                <p>Email: aradhya.gaonkar@example.com</p>
+                <p>LinkedIn: linkedin.com/in/aradhyagaonkar</p>
+                <p>GitHub: github.com/aradhyagaonkar</p>
+            </section>
+        </div>
     </div>
 
     <script>
