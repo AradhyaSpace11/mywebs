@@ -64,18 +64,27 @@
         </table>
     </div>
 
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="image1.jpg" class="active" />
-            <img src="image2.jpg" />
-            <img src="image3.jpg" />
-            <!-- Add more images as needed -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="penguin.jpeg" class="active" />
+                <img src="penguin2.jpg" />
+                <img src="penguin3.jpg" />
+                <!-- Add more images as needed -->
+            </div>
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
         </div>
-        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-        <button class="next" onclick="changeImage(1)">&#10095;</button>
     </div>
 
     <style>
+        .carousel-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+        }
+
         .carousel {
             position: relative;
             width: 300px; /* Set your desired width */
