@@ -67,13 +67,20 @@
     <div class="carousel-container">
         <div class="carousel">
             <div class="carousel-images">
-                <img src="penguin.jpeg" class="active" />
-                <img src="penguin2.jpg" />
-                <img src="penguin3.jpg" />
+                <img src="image1.jpg" class="active" alt="Image 1" />
+                <img src="image2.jpg" alt="Image 2" />
+                <img src="image3.jpg" alt="Image 3" />
                 <!-- Add more images as needed -->
             </div>
             <button class="prev" onclick="changeImage(-1)">&#10094;</button>
             <button class="next" onclick="changeImage(1)">&#10095;</button>
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="setImage(0)"></span>
+                <span class="indicator" onclick="setImage(1)"></span>
+                <span class="indicator" onclick="setImage(2)"></span>
+                <!-- Add more indicators as needed -->
+            </div>
+            <div class="carousel-caption">Image 1 Description</div>
         </div>
     </div>
 
