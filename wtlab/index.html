@@ -79,7 +79,7 @@
 
     <style>
         body {
-            background: linear-gradient(to right, #e0eafc, #cfdef3); /* Gradient background */
+            background-color: #000; /* Black background */
             font-family: 'Arial', sans-serif; /* Modern font */
             margin: 0; /* Remove default margin */
         }
@@ -93,10 +93,11 @@
 
         .carousel {
             position: relative;
-            width: 350px; /* Increased width for better image display */
+            width: 350px; /* Carousel width */
             overflow: hidden;
-            border-radius: 20px; /* More rounded corners */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2); /* Light shadow for depth */
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for the carousel */
         }
 
         .carousel-images {
@@ -107,7 +108,7 @@
         .carousel-images img {
             width: 100%;
             display: none; /* Hide all images by default */
-            border-radius: 20px; /* More rounded corners for images */
+            border-radius: 20px; /* Rounded corners for images */
         }
 
         .carousel-images img.active {
@@ -121,10 +122,10 @@
             background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
             border: none;
             border-radius: 50%; /* Circular buttons */
-            width: 50px; /* Increased button size */
-            height: 50px; /* Increased button size */
+            width: 50px; /* Button size */
+            height: 50px; /* Button size */
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced button shadow */
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Enhanced button shadow */
             transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
         }
 
@@ -146,8 +147,8 @@
             position: absolute;
             bottom: 10px;
             left: 10px;
-            color: #333; /* Dark text color */
-            background-color: rgba(251, 251, 251, 0.7); /* Semi-transparent background */
+            color: #fff; /* White text color for contrast */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
             padding: 5px 10px;
             border-radius: 5px; /* Rounded corners for caption */
             font-size: 14px; /* Caption font size */
