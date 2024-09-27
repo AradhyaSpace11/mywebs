@@ -12,14 +12,104 @@
         <h1 style="color: rgb(255, 255, 255);">PENGUIN</h1>
     </div>
     <div style="display: flex; justify-content: center;">
-        <img class = "pongin" src="penguin.jpeg" alt="pong">
+        <img class = "pongin" src="penguin2.jpg" alt="pong">
     </div>
-    <p style="color: aliceblue; text-align: center;">I like penguin they are very cute</p>
+    <br>
+    <p title="why i like penguin" style="color: aliceblue; text-align: center;">I like penguins <br> they are <br> small <br> fluffy <br>and cute</p>
     <br>
     <div class="top">
-        <button class = "btn">PONGIN</button>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+            <button class = "btn">send love ❤️</button>
+        </a>
+        
     </div>
-    
-    
+    <br>
+
+    <div class="top">
+        <ul style="color: white;">
+            <li style="color: white;">Penguins are mostly monogamous ❤️</li>
+            <li style="color: white;">They live in colonies</li>
+        </ul>
+
+    </div>
+
+    <div class="top">
+        <dl style="color: white;">
+            <dt>🐧Where are they found?</dt>
+            <dd>Antarctica</dd>
+            <dd>Lowermost parts of Earth</dd>
+            <dd>Near the edge of sea ice</dd>
+        </dl>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+
+    <div class = top>
+        <table style="color: aliceblue; border: 1px solid white; border-collapse: collapse;">
+            <tr>
+                <th style="border: 1px solid white;">Penguin Expert</th>
+                <th style="border: 1px solid white;">Aradhya</th>
+            </tr>
+            <tr>
+                <td rowspan="2" style="border: 1px solid white;">Telephone</td>
+                <td style="border: 1px solid white; text-align:center"> 9423060856 </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid white; text-align:center"> 9420687778 </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="image1.jpg" class="active" />
+            <img src="image2.jpg" />
+            <img src="image3.jpg" />
+            <!-- Add more images as needed -->
+        </div>
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <button class="next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+    <style>
+        .carousel {
+            position: relative;
+            width: 300px; /* Set your desired width */
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            display: none; /* Hide all images by default */
+        }
+
+        .carousel-images img.active {
+            display: block; /* Show only the active image */
+        }
+    </style>
+
+    <script>
+        let currentIndex = 0;
+
+        function changeImage(direction) {
+            const images = document.querySelectorAll('.carousel-images img');
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Optional: Auto-swipe every 5 seconds
+        setInterval(() => changeImage(1), 5000);
+    </script>
+
 </body>
 </html>
