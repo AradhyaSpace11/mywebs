@@ -7,7 +7,7 @@
     <link rel="script" href="app.js">
     <title>WebTechLab</title>
 </head>
-<body style="background-color: #000000; font-family: 'Arial', sans-serif; margin: 0;">
+<body style="font-family: 'Arial', sans-serif; margin: 0;">
     <div class = "top">
         <h1 style="color: rgb(255, 255, 255);">PENGUIN</h1>
     </div>
@@ -78,6 +78,12 @@
     </div>
 
     <style>
+        body {
+            background: linear-gradient(to right, #e0eafc, #cfdef3); /* Gradient background */
+            font-family: 'Arial', sans-serif; /* Modern font */
+            margin: 0; /* Remove default margin */
+        }
+
         .carousel-container {
             display: flex;
             justify-content: center; /* Center horizontally */
@@ -87,11 +93,10 @@
 
         .carousel {
             position: relative;
-            width: 300px; /* Set your desired width */
+            width: 350px; /* Increased width for better image display */
             overflow: hidden;
-            border-radius: 15px; /* Rounded corners for the carousel */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            overflow: hidden; /* Ensure images don't overflow */
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
         }
 
         .carousel-images {
@@ -102,7 +107,7 @@
         .carousel-images img {
             width: 100%;
             display: none; /* Hide all images by default */
-            border-radius: 15px; /* Rounded corners for images */
+            border-radius: 20px; /* More rounded corners for images */
         }
 
         .carousel-images img.active {
@@ -113,26 +118,39 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
             border: none;
             border-radius: 50%; /* Circular buttons */
-            width: 40px; /* Button size */
-            height: 40px; /* Button size */
+            width: 50px; /* Increased button size */
+            height: 50px; /* Increased button size */
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Button shadow */
-            transition: background-color 0.3s; /* Smooth background transition */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced button shadow */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
         }
 
         button:hover {
             background-color: rgba(255, 255, 255, 1); /* Solid background on hover */
+            transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
         }
 
         .prev {
-            left: 10px; /* Position left button */
+            left: 15px; /* Position left button */
         }
 
         .next {
-            right: 10px; /* Position right button */
+            right: 15px; /* Position right button */
+        }
+
+        /* Optional: Add a caption style */
+        .carousel-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #333; /* Dark text color */
+            background-color: rgba(251, 251, 251, 0.7); /* Semi-transparent background */
+            padding: 5px 10px;
+            border-radius: 5px; /* Rounded corners for caption */
+            font-size: 14px; /* Caption font size */
         }
     </style>
 
