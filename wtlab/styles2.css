@@ -1,5 +1,6 @@
 .container{
-    background-color: rgb(121, 13, 13);
+    margin:5px;
+    background-image: linear-gradient(to right, rgb(122, 0, 0), rgb(186, 55, 3));
     padding: 20px;
     border-radius: 15px;
     font-size: 25px;
@@ -11,4 +12,27 @@
 }
 p{
     color: rgb(255, 255, 255);
+}
+
+.container:hover{
+    transform: rotateX(10deg) rotateY(10deg);
+    transition: transform 0.5s;
+}
+
+.tester{
+    text-align: center;
+}
+#lbtn{
+    
+    background-color: rgb(48, 140, 246);
+    color: aliceblue;
+    border-radius: 8px;
+    font-weight: 600;
+    border-style:inset;
+    border-width: 4px;
+    border-color: rgb(0, 170, 255);
+}
+#lbtn:hover{
+    border-style:outset;
+
 }
