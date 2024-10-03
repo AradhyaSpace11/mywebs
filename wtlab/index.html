@@ -7,7 +7,7 @@
     <link rel="script" href="app.js">
     <title>WebTechLab</title>
 </head>
-<body style="font-family: 'Arial', sans-serif; margin: 0;">
+<body style="background-color: black;">
     <div class = "top">
         <h1 style="color: rgb(255, 255, 255);">PENGUIN</h1>
     </div>
@@ -48,7 +48,7 @@
 
 
 
-    <div class = top>
+    <div class = "top">
         <table style="color: aliceblue; border: 1px solid white; border-collapse: collapse;">
             <tr>
                 <th style="border: 1px solid white;">Penguin Expert</th>
@@ -63,118 +63,73 @@
             </tr>
         </table>
     </div>
+    <br>
 
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="image1.jpg" class="active" alt="Image 1" />
-                <img src="image2.jpg" alt="Image 2" />
-                <img src="image3.jpg" alt="Image 3" />
-                <!-- Add more images as needed -->
-            </div>
-            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-            <button class="next" onclick="changeImage(1)">&#10095;</button>
-            <div class="carousel-indicators">
-                <span class="indicator active" onclick="setImage(0)"></span>
-                <span class="indicator" onclick="setImage(1)"></span>
-                <span class="indicator" onclick="setImage(2)"></span>
-                <!-- Add more indicators as needed -->
-            </div>
-            <div class="carousel-caption">Image 1 Description</div>
-        </div>
+    <div class="top">
+        <iframe src="https://en.wikipedia.org/wiki/Penguin" frameborder="0"
+        width="800"
+        height="300"
+        title="Wiki"
+        allowfullscreen></iframe>
+    </div>
+    <br>
+
+    <div class="top">
+        <form>
+            <label for="namer" style="color: aliceblue;">NAME</label>
+            <br>
+            <input type="text" name="namer">
+            <br>
+            <label for="ager" style="color: aliceblue;">AGE:</label>
+            <br>
+            <input type="number" name="ager" id="">
+            <br>
+            <br>
+
+            <label for="radiss" style="color: aliceblue;">GENDER:</label>
+            <br>
+            <input type="radio" name="gend" id="f" value="female">
+            <label style="color: aliceblue;">F</label>
+            <br>
+            <input type="radio" name="gend" id="m" value="male">
+            <label style="color: aliceblue;">M</label>
+            <br>
+
+            <p style="color: aliceblue; font-size:large">SUBJECTS:</p>
+            <input type="checkbox" name="subject" id="math" value="mt"><label style="color: aliceblue;"> Math</label>
+            <br>
+            <input type="checkbox" name="subject" id="science" value="sc"><label style="color: aliceblue;"> Science</label>
+            <br>
+            <br>
+            <input type="submit" name="" id="">
+        </form>
     </div>
 
-    <style>
-        body {
-            background-color: #000; /* Black background */
-            font-family: 'Arial', sans-serif; /* Modern font */
-            margin: 0; /* Remove default margin */
-        }
+    <br>
+    <br>
 
-        .carousel-container {
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            height: 100vh; /* Full viewport height */
-        }
+    <div class="top">
+        <video src="pengvid.mp4" controls></video>
+    </div>
+    <br>
+    <br>
 
-        .carousel {
-            position: relative;
-            width: 350px; /* Carousel width */
-            overflow: hidden;
-            border-radius: 20px; /* Rounded corners */
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2); /* Light shadow for depth */
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for the carousel */
-        }
+    <div class="top">
+        <embed src="https://www.youtube.com/watch?v=7TGazb-8sZ0&list=LL&index=69" type="m">
+    </div>
 
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
+    <div class="top">
+        <audio controls><source src=""></audio>
+    </div>
 
-        .carousel-images img {
-            width: 100%;
-            display: none; /* Hide all images by default */
-            border-radius: 20px; /* Rounded corners for images */
-        }
+    <footer >
+        <nav>
+            <p><a href="#" style="color: aliceblue;">TERMS OF USE</a> | <a style="color: aliceblue;" href="#">PRIVACY POLICY</a></p>
+        </nav>
+    <p style="color: aliceblue;">&copy;Copyright 2024 Aradhya</p>
+    </footer>
 
-        .carousel-images img.active {
-            display: block; /* Show only the active image */
-        }
-        
-        button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
-            border: none;
-            border-radius: 50%; /* Circular buttons */
-            width: 50px; /* Button size */
-            height: 50px; /* Button size */
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Enhanced button shadow */
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
-        }
 
-        button:hover {
-            background-color: rgba(255, 255, 255, 1); /* Solid background on hover */
-            transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
-        }
-
-        .prev {
-            left: 15px; /* Position left button */
-        }
-
-        .next {
-            right: 15px; /* Position right button */
-        }
-
-        /* Optional: Add a caption style */
-        .carousel-caption {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            color: #fff; /* White text color for contrast */
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-            padding: 5px 10px;
-            border-radius: 5px; /* Rounded corners for caption */
-            font-size: 14px; /* Caption font size */
-        }
-    </style>
-
-    <script>
-        let currentIndex = 0;
-
-        function changeImage(direction) {
-            const images = document.querySelectorAll('.carousel-images img');
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            images[currentIndex].classList.add('active');
-        }
-
-        // Optional: Auto-swipe every 5 seconds
-        setInterval(() => changeImage(1), 5000);
-    </script>
-
+    
 </body>
 </html>
