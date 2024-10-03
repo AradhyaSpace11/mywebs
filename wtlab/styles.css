@@ -54,6 +54,17 @@ li{
     color: #ffffff;
     font-size: larger;
 }
+.pengi{
+    border-style:outset;
+    border-color: blueviolet;
+    border-width: 2px;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, rgb(0, 21, 255), purple);
+    color: #ffffff;
+}
+.pengi:hover{
+    border-width: 5px;
+}
 
 
 
