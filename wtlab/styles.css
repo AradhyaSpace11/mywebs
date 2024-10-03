@@ -37,7 +37,23 @@
 .pongin:hover:after {
   transform: rotateX(50deg) rotateY(50deg);
 }
-
+#divpara{
+    color: #ffffff;
+    text-align: center;
+    animation: identifier 2s infinite;
+}
+@keyframes identifier {
+    0% { font-size: 1em; }
+    50% { font-size: 1.5em; }
+    100% { font-size: 1em; }
+}
+p{
+    color: #ffffff;
+}
+li{
+    color: #ffffff;
+    font-size: larger;
+}
 
 
 
