@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+</head>
+<body>
+    <h1>Parent-Teacher Meeting Scheduler - Feedback</h1>
+
+    <!-- Meeting Schedule -->
+    <h2>Available Meeting Slots</h2>
+    <select id="meetingSlots">
+        <option value="9am">9:00 AM - 10:00 AM</option>
+        <option value="10am">10:00 AM - 11:00 AM</option>
+        <option value="11am">11:00 AM - 12:00 PM</option>
+        <option value="1pm">1:00 PM - 2:00 PM</option>
+    </select>
+
+    <!-- Feedback Form -->
+    <h2>Feedback Form</h2>
+    <form id="feedbackForm">
+        <label for="feedback">Provide feedback on communication, organization, and overall experience:</label>
+        <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+        <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+    </form>
+
+    <!-- Confirmation Message -->
+    <p id="confirmationMessage" style="display: none;">Thank you! Your feedback has been submitted successfully.</p>
+
+    <!-- Include script2.js -->
+    <script src="script2.js"></script>
+</body>
+</html>

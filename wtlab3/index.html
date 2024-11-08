@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        input {
+            width: 95%;
+            height: 30px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            padding: 5px;
+        }
+        h1 {
+            color: green;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        body {
+            width: 60%;
+            text-align: center;
+        }
+        .cse {
+            background-color: White;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KLE TECH</h1>
+    <h2><form> Tag</h2>
+    
+    <!-- Sign Up Form -->
+    <form id="signUpForm" onsubmit="return validateForm()">
+        <div class="cse">
+            <h2>Sign Up Form</h2>
+            <b>Email</b><br>
+            <input type="text" id="email" placeholder="Enter Email" name="email" required><br>
+            
+            <br><b>Username</b><br>
+            <input type="text" id="username" placeholder="Username" name="uid" required><br>
+            
+            <br><b>Password</b><br>
+            <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+            <br>
+            
+            <button type="submit" class="registerbtn">Register</button>
+        </div>
+        <div class="container signin">
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Email validation
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Username validation (at least 4 characters)
+            if (username.length < 4) {
+                alert("Username must be at least 4 characters long.");
+                return false;
+            }
+
+            // Password validation (at least 8 characters, 1 uppercase, 1 number)
+            const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must be at least 8 characters long, contain one uppercase letter, and one number.");
+                return false;
+            }
+
+            alert("Registration successful!");
+            return true;
+        }
+    </script>
+</body>
+</html>
